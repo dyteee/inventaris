@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skrip Penjelasan Video Presentasi Proyek Fullstack Laravel - Sistem Inventaris Sekolah</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 16mm 18mm 16mm;
+            @bottom-right {
+                content: counter(page);
+                font-family: 'Segoe UI', system-ui, sans-serif;
+                font-size: 8pt;
+                color: #64748b;
+            }
+            @bottom-left {
+                content: "Sistem Inventaris Sekolah - Video Presentation Script";
+                font-family: 'Segoe UI', system-ui, sans-serif;
+                font-size: 8pt;
+                color: #94a3b8;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            background: #ffffff;
+            line-height: 1.55;
+            font-size: 9.5pt;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cover-page {
+            page-break-after: always;
+            padding: 24px 10px 10px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 92vh;
+            text-align: center;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 8.5pt;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .cover-title {
+            font-size: 23pt;
+            font-weight: 900;
+            color: #0f172a;
+            line-height: 1.25;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .cover-subtitle {
+            font-size: 12pt;
+            color: #2563eb;
+            font-weight: 700;
+            margin: 0 0 14px 0;
+        }
+
+        .cover-desc {
+            font-size: 9.5pt;
+            color: #475569;
+            max-width: 650px;
+            margin: 0 auto 24px auto;
+            line-height: 1.6;
+        }
+
+        .cover-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 18px 22px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .cover-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9pt;
+        }
+
+        .cover-card td {
+            padding: 5px 8px;
+            vertical-align: top;
+        }
+
+        .cover-card td.label {
+            font-weight: 700;
+            color: #475569;
+            width: 32%;
+        }
+
+        .cover-card td.val {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .req-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 8.5pt;
+        }
+
+        .req-card h4 {
+            margin: 0 0 4px 0;
+            font-size: 9pt;
+            font-weight: 700;
+            color: #1e3a8a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cover-footer {
+            font-size: 8.5pt;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 14px;
+            margin-top: 20px;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        h1.section-title {
+            font-size: 14pt;
+            font-weight: 800;
+            color: #0f172a;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 5px;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-badge {
+            background: #1e293b;
+            color: #ffffff;
+            font-size: 8pt;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        h2.sub-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        p {
+            margin: 0 0 8px 0;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 0 0 10px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        .highlight-box {
+            background: #f0f9ff;
+            border-left: 3.5px solid #0284c7;
+            padding: 9px 12px;
+            border-radius: 0 8px 8px 0;
+            margin: 10px 0;
+            font-size: 9pt;
+        }
+
+        .tip-box {
+            background: #f0fdf4;
+            border-left: 3.5px solid #16a34a;
+            padding: 9px 12px;
+            border-radius: 0 8px 8px 0;
+            margin: 10px 0;
+            font-size: 9pt;
+        }
+
+        .action-box {
+            background: #fffbeb;
+            border-left: 3.5px solid #d97706;
+            padding: 8px 12px;
+            border-radius: 0 8px 8px 0;
+            margin: 8px 0;
+            font-size: 8.5pt;
+        }
+
+        .action-header {
+            font-weight: 700;
+            color: #b45309;
+            font-size: 8.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+
+        .script-box {
+            background: #fdf4ff;
+            border: 1px solid #f0abfc;
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin: 8px 0 12px 0;
+        }
+
+        .script-header {
+            font-weight: 800;
+            color: #86198f;
+            font-size: 9pt;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .script-text {
+            color: #581c87;
+            font-size: 9pt;
+            line-height: 1.55;
+            font-style: italic;
+        }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 8.5pt;
+        }
+
+        .table-custom th {
+            background: #f1f5f9;
+            color: #0f172a;
+            font-weight: 700;
+            text-align: left;
+            padding: 7px 9px;
+            border: 1px solid #cbd5e1;
+            font-size: 8.5pt;
+        }
+
+        .table-custom td {
+            padding: 6px 9px;
+            border: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .table-custom tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+
+        code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background: #f1f5f9;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            color: #0f172a;
+            border: 1px solid #e2e8f0;
+        }
+
+        .code-block {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 8pt;
+            line-height: 1.45;
+            margin: 8px 0;
+            overflow-x: hidden;
+        }
+
+        .code-block .comment { color: #94a3b8; }
+        .code-block .keyword { color: #38bdf8; font-weight: bold; }
+        .code-block .string { color: #a3e635; }
+        .code-block .function { color: #f472b6; }
+
+        .timeline-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 8.5pt;
+        }
+
+        .timeline-table th {
+            background: #1e293b;
+            color: #ffffff;
+            padding: 7px 10px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 8.5pt;
+        }
+
+        .timeline-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+        }
+
+        .timeline-table tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+
+        .badge-step {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 7.5pt;
+            text-transform: uppercase;
+        }
+
+        .badge-obs { background: #e0e7ff; color: #3730a3; border: 1px solid #c7d2fe; }
+        .badge-vscode { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+        .badge-browser { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================== -->
+    <!-- HALAMAN COVER RESMI -->
+    <!-- ============================================================== -->
+    <div class="cover-page">
+        <div>
+            <span class="cover-badge">Dokumen Panduan Teknis & Naskah Video Presentasi</span>
+            <h1 class="cover-title">SKRIP VIDEO PRESENTASI PROYEK FULLSTACK LARAVEL</h1>
+            <h2 class="cover-subtitle">Sistem Informasi Manajemen Inventaris & Sarana Prasarana Sekolah (SIM Sarpras)</h2>
+            <p class="cover-desc">
+                Naskah kata-per-kata <em>(spoken script)</em>, panduan aksi visual layar & code editor, demonstrasi alur kerja sistem, arsitektur teknis backend-frontend, serta pembahasan kendala dan solusi yang disesuaikan secara presisi dengan ketentuan evaluasi proyek 3 minggu.
+            </p>
+
+            <div class="cover-card">
+                <table>
+                    <tr>
+                        <td class="label">Judul Proyek</td>
+                        <td class="val">: Sistem Inventaris Sekolah (SIM Sarpras / E-Sarpras)</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Teknologi Utama</td>
+                        <td class="val">: Laravel 11/12 &bull; Blade &bull; Tailwind CSS &bull; Alpine.js &bull; MySQL</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Format Presentasi</td>
+                        <td class="val">: Rekaman Video Presentasi (Wajah + Code Editor VS Code)</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Target Durasi Video</td>
+                        <td class="val">: 15 – 18 Menit (Batas Ketentuan: 10 – 20 Menit)</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Nama File Pengumpulan</td>
+                        <td class="val">: <code>Nama Lengkap - Video Penjelasan Project Fullstack Laravel.mp4</code></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Batas Pengumpulan</td>
+                        <td class="val">: Jumat, 30 Oktober 2026 (Google Drive Magang)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="requirements-grid">
+                <div class="req-card">
+                    <h4><span>🎥</span> Format Visual</h4>
+                    Wajib menampilkan wajah pembicara (kamera webcam) dan tampilan layar Code Editor (VS Code) serta browser secara bergantian atau Picture-in-Picture (PiP).
+                </div>
+                <div class="req-card">
+                    <h4><span>🎙️</span> Kualitas Audio & Bahasa</h4>
+                    Audio terdengar jernih, tempo bicara teratur, menggunakan bahasa sendiri yang profesional, percaya diri, komunikatif, dan tidak sekadar membaca baris kode.
+                </div>
+                <div class="req-card">
+                    <h4><span>⚙️</span> 7 Materi Wajib</h4>
+                    1) Gambaran Proyek, 2) Struktur Folder Laravel, 3) Database & Relasi, 4) Backend, 5) Frontend & Blade, 6) Live Demo Aplikasi, 7) Kendala & Solusi.
+                </div>
+                <div class="req-card">
+                    <h4><span>🚀</span> Eksekusi Live Demo</h4>
+                    Aplikasi berjalan langsung pada web server lokal (Apache XAMPP / Artisan) untuk membuktikan fitur autentikasi, CRUD, dan sirkulasi transaksi.
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-footer">
+            Disusun untuk memenuhi Tugas Akhir Proyek Fullstack Laravel Magang & Pelatihan Web Development &bull; Tahun 2026
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- BAGIAN 0: RENCANA TIMELINE & PANDUAN PEREKAMAN -->
+    <!-- ============================================================== -->
+    <div>
+        <h1 class="section-title">
+            <span>Rencana Timeline & Strategi Perekaman Video (Target: 16 Menit)</span>
+            <span class="timeline-badge">Overview Durasi</span>
+        </h1>
+
+        <table class="timeline-table">
+            <thead>
+                <tr>
+                    <th style="width: 14%;">Waktu</th>
+                    <th style="width: 28%;">Materi yang Dibahas</th>
+                    <th style="width: 25%;">Tampilan Layar</th>
+                    <th style="width: 33%;">Fokus Inti Penjelasan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>00:00 – 01:30</strong></td>
+                    <td>Pembukaan & Perkenalan Diri</td>
+                    <td><span class="badge-step badge-obs">Kamera Penuh (Webcam)</span></td>
+                    <td>Salam, perkenalan nama, judul proyek, latar belakang magang 3 minggu.</td>
+                </tr>
+                <tr>
+                    <td><strong>01:30 – 03:30</strong></td>
+                    <td><strong>1. Gambaran Proyek</strong></td>
+                    <td><span class="badge-step badge-browser">Browser / Welcome Screen</span></td>
+                    <td>Latar belakang buku manual, tujuan digitalisasi sarpras, fitur Admin & User.</td>
+                </tr>
+                <tr>
+                    <td><strong>03:30 – 05:45</strong></td>
+                    <td><strong>2. Struktur Proyek Laravel</strong></td>
+                    <td><span class="badge-step badge-vscode">VS Code Explorer</span></td>
+                    <td>Bedah fungsi folder: <code>app</code>, <code>routes</code>, <code>resources</code>, <code>database</code>, <code>public</code>, <code>.env</code>.</td>
+                </tr>
+                <tr>
+                    <td><strong>05:45 – 08:30</strong></td>
+                    <td><strong>3. Database, Tabel & Relasi</strong></td>
+                    <td><span class="badge-step badge-vscode">VS Code Migrations & Models</span></td>
+                    <td>6 tabel utama, relasi Eloquent (1:N, 1:1), migration, seeder realistis.</td>
+                </tr>
+                <tr>
+                    <td><strong>08:30 – 11:00</strong></td>
+                    <td><strong>4. Backend Laravel</strong></td>
+                    <td><span class="badge-step badge-vscode">VS Code Controller & Routes</span></td>
+                    <td>Routing, middleware role, <code>DB::transaction()</code>, validasi Form Request.</td>
+                </tr>
+                <tr>
+                    <td><strong>11:00 – 13:00</strong></td>
+                    <td><strong>5. Frontend & Blade Template</strong></td>
+                    <td><span class="badge-step badge-vscode">VS Code Blade Views</span></td>
+                    <td>Layout master, komponen Blade, Tailwind CSS, Alpine.js, sanitasi XSS.</td>
+                </tr>
+                <tr>
+                    <td><strong>13:00 – 16:45</strong></td>
+                    <td><strong>6. Demonstrasi Aplikasi (Live Demo)</strong></td>
+                    <td><span class="badge-step badge-browser">Browser Fullscreen</span></td>
+                    <td>Live demo login Admin & Siswa, CRUD barang, alur pinjam, verifikasi kembali, laporan.</td>
+                </tr>
+                <tr>
+                    <td><strong>16:45 – 18:30</strong></td>
+                    <td><strong>7. Kendala & Solusi Teknis</strong></td>
+                    <td><span class="badge-step badge-vscode">VS Code / Webcam PiP</span></td>
+                    <td>Race condition stok, constraint foreign key, sesi 419 CSRF, layout cetak CSS.</td>
+                </tr>
+                <tr>
+                    <td><strong>18:30 – 19:30</strong></td>
+                    <td>Kesimpulan & Penutup</td>
+                    <td><span class="badge-step badge-obs">Kamera Penuh (Webcam)</span></td>
+                    <td>Refleksi pembelajaran 3 minggu, ucapan terima kasih kepada mentor & salam.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="tip-box">
+            <strong>💡 Tips Teknis Perekaman yang Direkomendasikan:</strong>
+            Gunakan aplikasi gratis seperti <strong>OBS Studio</strong> atau ekstensi <strong>Loom</strong>. Atur layout OBS dengan <em>Scene 1</em> (Kamera Webcam Penuh untuk pembukaan dan penutup) dan <em>Scene 2</em> (Tangkap Layar Layar Penuh dengan kamera wajah di pojok kanan bawah / <em>Picture-in-Picture</em>). Pastikan resolusi rekaman minimal 1080p (Full HD) dan microphone tidak berdengung.
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- BAGIAN 0: PEMBUKAAN & PERKENALAN -->
+    <!-- ============================================================== -->
+    <div style="margin-top: 14px;">
+        <h1 class="section-title">
+            <span>Segmen 0: Pembukaan & Perkenalan Diri</span>
+            <span class="timeline-badge">00:00 – 01:30</span>
+        </h1>
+
+        <div class="action-box">
+            <div class="action-header">🎬 Petunjuk Aksi Layar & Visual:</div>
+            Tampilkan <strong>wajah penuh melalui webcam</strong>. Posisikan kamera sejajar dengan mata (eye-level), pencahayaan ruangan terang dari arah depan, dan tersenyum ramah. Berikan salam pembuka dengan artikulasi suara yang tegas dan bersemangat.
+        </div>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata:</div>
+            <div class="script-text">
+                "Halo, selamat pagi/siang rekan-rekan semua, serta Bapak/Ibu trainer dan pembimbing magang yang saya hormati.<br><br>
+                Perkenalkan, nama saya <strong>[Sebutkan Nama Lengkap Anda]</strong>. Pada kesempatan video presentasi kali ini, saya sangat antusias untuk membagikan dan mendemonstrasikan hasil proyek fullstack yang telah saya kerjakan selama kurang lebih tiga minggu terakhir, yaitu <strong>Sistem Informasi Manajemen Inventaris dan Sarana Prasarana Sekolah</strong> atau yang kami beri nama <strong>SIM Sarpras</strong>.<br><br>
+                Aplikasi ini dibangun secara fullstack menggunakan framework <strong>Laravel 11</strong> dengan antarmuka <strong>Blade</strong>, didukung styling modern <strong>Tailwind CSS</strong>, serta basis data relasional <strong>MySQL</strong>.<br><br>
+                Dalam durasi sekitar 15 menit ke depan, saya akan menjelaskan secara komprehensif mulai dari gambaran dan tujuan proyek, struktur arsitektur folder Laravel, skema basis data dan relasinya, logika backend dan keamanan sistem, perancangan frontend Blade, demonstrasi langsung aplikasi (live demo) dengan berbagai skenario pengguna, hingga kendala teknis nyata yang saya hadapi beserta solusi penerapannya. Mari langsung saja kita masuk ke pembahasan yang pertama."
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- ============================================================== -->
+    <!-- BAGIAN 1: GAMBARAN PROYEK -->
+    <!-- ============================================================== -->
+    <div>
+        <h1 class="section-title">
+            <span>1. Gambaran Proyek: Tujuan, Fungsi & Fitur Utama</span>
+            <span class="timeline-badge">01:30 – 03:30</span>
+        </h1>
+
+        <div class="action-box">
+            <div class="action-header">🎬 Petunjuk Aksi Layar & Visual:</div>
+            Pindahkan tampilan ke <strong>layar browser</strong> yang menampilkan halaman utama / landing page aplikasi atau halaman Dashboard, dengan wajah pembicara berada di kotak <em>Picture-in-Picture (PiP)</em> pojok kanan bawah. Gerakkan kursor perlahan ke area statistik dashboard.
+        </div>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata:</div>
+            <div class="script-text">
+                "Baik, mari kita mulai dari <strong>Gambaran Proyek</strong>.<br><br>
+                Di institusi pendidikan sekolah, pengelolaan sarana dan prasarana—seperti peralatan laboratorium komputer, multimedia, alat peraga sains, hingga sarana olahraga—merupakan tulang punggung kegiatan belajar mengajar. Namun, kendala klasik yang hampir selalu terjadi di lapangan adalah <strong>pencatatan manual berbasis buku besar atau spreadsheet terpisah</strong>.<br><br>
+                Pencatatan manual tersebut menimbulkan tiga masalah fatal: pertama, <em>ketidakcocokan stok barang</em> antara catatan dengan fisik di gudang; kedua, <em>sirkulasi peminjaman yang tidak terpantau</em>, sehingga alat yang dipinjam guru atau siswa sering terlambat dikembalikan tanpa peringatan; dan ketiga, <em>tidak adanya jejak audit</em> ketika terjadi kehilangan atau kerusakan barang.<br><br>
+                Oleh karena itu, <strong>tujuan utama dari Sistem Inventaris Sekolah ini</strong> adalah mendigitalisasi seluruh rantai pengelolaan aset sarana prasarana sekolah ke dalam satu sistem terintegrasi yang akurat, transparan, dan dapat diakses secara multiuser secara <em>real-time</em>."
+            </div>
+        </div>
+
+        <h2 class="sub-title">Fitur-Fitur Utama Berdasarkan Peran Pengguna (Role Management):</h2>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata:</div>
+            <div class="script-text">
+                "Sistem ini kami rancang dengan memisahkan hak akses secara tegas menjadi dua peran utama:<br><br>
+                <strong>1. Peran Admin atau Pengelola Sarpras:</strong><br>
+                Admin memiliki kendali operasional penuh, meliputi:
+                <ul>
+                    <li><strong>Dashboard Eksekutif KPI:</strong> Memberikan ringkasan instan mengenai total aset fisik, jumlah barang sedang dipinjam, transaksi terlambat, hingga kartu peringatan stok kritis jika stok &le; 5 unit.</li>
+                    <li><strong>Manajemen Master Data Barang & Kategori:</strong> Operasi CRUD lengkap dengan kode SKU unik, spesifikasi kondisi barang (Baik, Rusak Ringan, Rusak Berat), dan lokasi penyimpanan.</li>
+                    <li><strong>Sirkulasi Peminjaman & Verifikasi Pengembalian:</strong> Mengawasi transaksi peminjaman aktif dan mencatat asesmen kondisi fisik barang saat dikembalikan dengan pemulihan stok otomatis.</li>
+                    <li><strong>Laporan Cetak & Ekspor CSV:</strong> Menghasilkan rekapitulasi data inventaris dan log peminjaman yang siap dicetak bersih atau diunduh ke format Excel/CSV.</li>
+                    <li><strong>Audit Trail (Activity Logs):</strong> Perekaman otomatis seluruh riwayat aktivitas pengguna untuk transparansi data.</li>
+                </ul>
+                <strong>2. Peran User (Guru dan Siswa):</strong><br>
+                User memiliki portal mandiri untuk melihat katalog ketersediaan barang inventaris sekolah secara transparan, mengajukan permohonan pinjam secara mandiri, memantau tenggat waktu pengembalian, serta melihat riwayat barang yang pernah dipinjam."
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- BAGIAN 2: STRUKTUR PROYEK LARAVEL -->
+    <!-- ============================================================== -->
+    <div style="margin-top: 14px;">
+        <h1 class="section-title">
+            <span>2. Struktur Proyek Laravel Modern</span>
+            <span class="timeline-badge">03:30 – 05:45</span>
+        </h1>
+
+        <div class="action-box">
+            <div class="action-header">🎬 Petunjuk Aksi Layar & Visual:</div>
+            Beralih ke tampilan <strong>Code Editor (VS Code)</strong>. Buka sidebar file explorer di sebelah kiri. Arahkan kursor dan buka folder-folder utama: <code>app</code>, <code>routes</code>, <code>resources</code>, <code>database</code>, <code>public</code>, <code>bootstrap/app.php</code>, dan berkas <code>.env</code>.
+        </div>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata:</div>
+            <div class="script-text">
+                "Sekarang kita beralih ke poin kedua, yaitu <strong>Struktur Proyek Laravel</strong>.<br><br>
+                Aplikasi ini dibangun menggunakan arsitektur modern Laravel 11/12 yang sangat bersih dan terorganisir. Mari kita bedah fungsi dari folder dan file intinya:<br><br>
+                1. <strong>Folder <code>app/</code>:</strong> Merupakan jantung dari logika bisnis aplikasi. Di dalam subfolder <code>Http/Controllers/</code> terdapat seluruh controller yang memproses permintaan HTTP, seperti <code>ItemController</code>, <code>LoanController</code>, <code>ReturnLogController</code>, dan <code>ReportController</code>. Di subfolder <code>Models/</code> terdapat Eloquent ORM yang merepresentasikan tabel basis data. Serta terdapat <code>Requests/</code> untuk validasi formulir dan <code>Middleware/</code> untuk otorisasi hak akses.<br><br>
+                2. <strong>Folder <code>routes/</code>:</strong> Berfungsi sebagai pemetaan URL aplikasi. File utama yang kita gunakan adalah <code>routes/web.php</code> yang mendefinisikan rute web berproteksi otentikasi dan peran admin, serta <code>routes/auth.php</code> yang menangani rute login, register, dan reset password dari Laravel Breeze.<br><br>
+                3. <strong>Folder <code>resources/</code>:</strong> Berisi lapisan presentasi antarmuka. Di dalam <code>resources/views/</code> terdapat file-file Blade template yang terbagi rapi ke dalam folder entitas seperti <code>items/</code>, <code>loans/</code>, <code>categories/</code>, <code>reports/</code>, dan folder <code>layouts/</code> untuk master layout tampilan. Di sini juga terdapat <code>css/</code> dan <code>js/</code> yang dikompilasi oleh Vite.<br><br>
+                4. <strong>Folder <code>database/</code>:</strong> Menyimpan struktur skema basis data. Subfolder <code>migrations/</code> berisi file migrasi untuk version control tabel, serta <code>seeders/</code> untuk menabur data awal pengujian sistem.<br><br>
+                5. <strong>Folder <code>public/</code>:</strong> Merupakan satu-satunya document root yang dapat diakses publik oleh web server. Berisi <code>index.php</code> sebagai titik masuk aplikasi, asset hasil build Vite, gambar, dan dokumen statis.<br><br>
+                6. <strong>File <code>.env</code>:</strong> Menyimpan konfigurasi variabel lingkungan yang bersifat sensitif dan dinamis, seperti koneksi database MySQL (<code>DB_HOST</code>, <code>DB_DATABASE=inventaris_febi</code>, <code>DB_USERNAME</code>), konfigurasi session, dan nama aplikasi.<br><br>
+                <em>Poin penting arsitektur:</em> Pada Laravel 11/12 yang kami gunakan, konfigurasi middleware dan penanganan error tidak lagi menggunakan <code>Kernel.php</code> lama, melainkan disatukan secara elegan di berkas <strong><code>bootstrap/app.php</code></strong>."
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- ============================================================== -->
+    <!-- BAGIAN 3: DATABASE, TABEL, RELASI, MIGRATION & SEEDER -->
+    <!-- ============================================================== -->
+    <div>
+        <h1 class="section-title">
+            <span>3. Database, Tabel, Relasi, Migration, Model & Seeder</span>
+            <span class="timeline-badge">05:45 – 08:30</span>
+        </h1>
+
+        <div class="action-box">
+            <div class="action-header">🎬 Petunjuk Aksi Layar & Visual:</div>
+            Di VS Code, buka folder <code>database/migrations/</code> dan tunjukkan file-file migrasi. Selanjutnya buka file Model <code>app/Models/Item.php</code> dan <code>app/Models/Loan.php</code> untuk menunjukkan metode relasi <code>belongsTo</code> dan <code>hasMany</code>. Jika memungkinkan, tampilkan diagram relasi atau struktur tabel di phpMyAdmin.
+        </div>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata:</div>
+            <div class="script-text">
+                "Memasuki poin ketiga, yaitu <strong>Database dan Relasi Antar Tabel</strong>.<br><br>
+                Sistem Inventaris Sekolah ini didukung oleh basis data relasional MySQL yang terdiri dari <strong>6 tabel entitas utama</strong> yang saling terhubung untuk menjamin integritas data referensial:<br><br>
+                1. <strong>Tabel <code>users</code>:</strong> Menyimpan data kredensial akun, nama lengkap, email, password terenkripsi bcrypt, serta kolom penentu peran yaitu <code>role</code> dengan nilai enum <code>admin</code> atau <code>user</code>.<br>
+                2. <strong>Tabel <code>categories</code>:</strong> Pengelompokan jenis barang inventaris, seperti Laboratorium Komputer, Multimedia, Alat Olahraga, dan Sarpras Umum.<br>
+                3. <strong>Tabel <code>items</code>:</strong> Menyimpan detail spesifik barang, mencakup <code>category_id</code> sebagai foreign key, <code>code</code> (kode inventaris unik/SKU), nama barang, sisa <code>stock</code> fisik, kondisi awal, dan lokasi penyimpanan.<br>
+                4. <strong>Tabel <code>loans</code>:</strong> Mencatat seluruh transaksi peminjaman. Menghubungkan <code>user_id</code> (siapa yang meminjam), <code>item_id</code> (barang apa), jumlah unit yang dipinjam, <code>loan_date</code>, <code>due_date</code>, serta status peminjaman (<code>dipinjam</code>, <code>terlambat</code>, <code>dikembalikan</code>).<br>
+                5. <strong>Tabel <code>return_logs</code>:</strong> Mencatat log verifikasi pengembalian barang, dengan relasi foreign key <code>loan_id</code>, waktu aktual pengembalian <code>returned_at</code>, kondisi fisik barang saat kembali, dan catatan petugas.<br>
+                6. <strong>Tabel <code>activity_logs</code>:</strong> Tabel pencatatan jejak audit (audit trail) otomatis yang merekam <code>user_id</code>, tipe aksi (seperti tambah barang, hapus transaksi, login), dan keterangan detail perubahan."
+            </div>
+        </div>
+
+        <h2 class="sub-title">Relasi Eloquent Antar Model (Object-Relational Mapping):</h2>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata:</div>
+            <div class="script-text">
+                "Di tingkat model Eloquent, relasi antar tabel dipetakan secara sangat terstruktur:
+                <ul>
+                    <li>Relasi <strong>One-to-Many</strong> antara <code>Category</code> dan <code>Item</code>: Satu kategori memiliki banyak barang (<code>$this->hasMany(Item::class)</code>), dan setiap barang merujuk pada satu kategori (<code>$this->belongsTo(Category::class)</code>).</li>
+                    <li>Relasi <strong>One-to-Many</strong> antara <code>User</code> dan <code>Loan</code>, serta antara <code>Item</code> dan <code>Loan</code>: Pengguna dan barang dapat memiliki banyak riwayat transaksi peminjaman.</li>
+                    <li>Relasi <strong>One-to-One</strong> antara <code>Loan</code> dan <code>ReturnLog</code>: Satu transaksi peminjaman hanya dapat memiliki satu catatan pengembalian resmi (<code>$this->hasOne(ReturnLog::class)</code>).</li>
+                </ul>
+                Selain itu, kami memanfaatkan <strong>Migration</strong> sebagai pengendali versi skema sehingga struktur tabel dapat dibuat ulang secara konsisten melalui perintah <code>php artisan migrate</code>. Kami juga menerapkan <strong>Database Seeder</strong> (seperti <code>UserSeeder</code>, <code>CategorySeeder</code>, dan <code>ItemSeeder</code>) yang menyediakan data awal yang siap uji coba, termasuk akun admin dan akun siswa pengujian."
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- BAGIAN 4: BACKEND LARAVEL -->
+    <!-- ============================================================== -->
+    <div style="margin-top: 14px;">
+        <h1 class="section-title">
+            <span>4. Backend Laravel: Routing, Middleware, Validasi & Error Handling</span>
+            <span class="timeline-badge">08:30 – 11:00</span>
+        </h1>
+
+        <div class="action-box">
+            <div class="action-header">🎬 Petunjuk Aksi Layar & Visual:</div>
+            Di VS Code, buka berturut-turut:
+            1. <code>routes/web.php</code> (sorot middleware grouping).
+            2. <code>app/Http/Middleware/EnsureUserRole.php</code> (perlihatkan pengecekan peran).
+            3. <code>app/Http/Requests/StoreLoanRequest.php</code> (perlihatkan validasi kuota stok).
+            4. <code>app/Http/Controllers/LoanController.php</code> (sorot blok <code>DB::transaction</code>).
+            5. <code>bootstrap/app.php</code> (sorot exception handler CSRF 419).
+        </div>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata:</div>
+            <div class="script-text">
+                "Kita lanjut ke poin keempat, yaitu <strong>Backend Laravel</strong>.<br><br>
+                Di sisi backend, kami menerapkan praktik arsitektur terbaik untuk menjamin kecepatan, integritas data, dan keamanan aplikasi:<br><br>
+                <strong>1. Routing & Pengelompokan Hak Akses:</strong><br>
+                Bisa kita lihat pada <code>routes/web.php</code>, semua rute sistem dibungkus di dalam middleware <code>auth</code> agar tidak dapat diakses tanpa login. Khusus untuk operasi manajerial seperti CRUD barang, kategori, pengguna, dan verifikasi pengembalian, rute diproteksi lebih lanjut menggunakan middleware khusus <strong><code>role:admin</code></strong>.<br><br>
+                <strong>2. Middleware Kustom (<code>EnsureUserRole.php</code>):</strong><br>
+                Middleware ini bertugas memeriksa apakah pengguna yang sedang aktif memiliki peran yang diizinkan. Jika pengguna dengan peran 'user' atau siswa mencoba membobol URL admin melalui browser, sistem akan langsung menolak dan melempar respons HTTP <strong>403 Forbidden: Akses Ditolak</strong>.<br><br>
+                <strong>3. Validasi Form Request Ketat (<code>StoreLoanRequest.php</code>):</strong><br>
+                Validasi input tidak kami letakkan secara berantakan di dalam Controller, melainkan dipisahkan ke dalam Form Request khusus. Yang paling istimewa, selain aturan standar seperti format tanggal dan keharusan memilih barang, kami menambahkan aturan kustom menggunakan <em>after-validation hook</em> untuk <strong>memverifikasi bahwa jumlah unit yang dipinjam tidak boleh melebihi sisa stok fisik yang tersedia di database</strong>. Hal ini mencegah terjadinya stok minus.<br><br>
+                <strong>4. Integritas Transaksi Database (<code>DB::transaction</code>):</strong><br>
+                Pada saat peminjaman dan pengembalian barang, terjadi dua operasi berantai: mengubah stok barang dan membuat log transaksi. Kami membungkus operasi ini di dalam <strong><code>DB::transaction()</code></strong>. Jika salah satu query gagal, database akan otomatis melakukan <em>rollback</em> utuh, sehingga tidak ada data menggantung atau stok yang tidak sinkron.<br><br>
+                <strong>5. Penanganan Error yang Ramah Pengguna:</strong><br>
+                Pada <code>bootstrap/app.php</code>, kami mengkustomisasi penanganan <code>TokenMismatchException</code> (error CSRF 419) yang sering terjadi ketika pengguna membiarkan tab browser terbuka terlalu lama. Alih-alih menampilkan halaman error putih yang membingungkan, sistem secara otomatis mengalihkan pengguna kembali dengan notifikasi flash pesan yang informatif."
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- ============================================================== -->
+    <!-- BAGIAN 5: FRONTEND & BLADE TEMPLATE -->
+    <!-- ============================================================== -->
+    <div>
+        <h1 class="section-title">
+            <span>5. Frontend & Blade Templating Engine</span>
+            <span class="timeline-badge">11:00 – 13:00</span>
+        </h1>
+
+        <div class="action-box">
+            <div class="action-header">🎬 Petunjuk Aksi Layar & Visual:</div>
+            Di VS Code, buka file master layout <code>resources/views/layouts/app.blade.php</code> dan salah satu file view konten seperti <code>resources/views/items/index.blade.php</code> atau <code>resources/views/dashboard.blade.php</code>. Tunjukkan bagaimana data di-looping menggunakan <code>@forelse</code> dan diformat dengan aman.
+        </div>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata:</div>
+            <div class="script-text">
+                "Berikutnya adalah poin kelima, yaitu <strong>Frontend dan Blade Templating</strong>.<br><br>
+                Antarmuka pengguna SIM Sarpras dirancang dengan pendekatan <em>clean, modern, and responsive</em> menggunakan template engine bawaan Laravel, yaitu <strong>Blade</strong>, yang dipadukan dengan <strong>Tailwind CSS</strong> dan <strong>Alpine.js</strong>.<br><br>
+                <strong>1. Konsep Layouting & Reusability:</strong><br>
+                Kami menerapkan prinsip DRY (<em>Don't Repeat Yourself</em>) dengan menggunakan master layout <code>layouts/app.blade.php</code>. Komponen seperti navbar atas, sidebar navigasi, modal konfirmasi, hingga penampil alert pesan flash disatukan dalam layout utama. Halaman-halaman konten seperti daftar barang dan form peminjaman cukup memanfaatkan tag komponen <code>&lt;x-app-layout&gt;</code> dan menyuntikkan konten ke dalam slot yang tersedia.<br><br>
+                <strong>2. Proses Menampilkan Data dari Backend:</strong><br>
+                Data yang dikirimkan dari Controller—misalnya daftar barang yang sudah dipaginasi—diterima oleh view Blade dan ditampilkan menggunakan direktif <strong><code>@forelse</code></strong>. Direktif ini sangat rapi karena secara otomatis menangani kondisi ketika data ditemukan maupun ketika data masih kosong melalui blok <code>@empty</code>.<br><br>
+                <strong>3. Keamanan Rendering & Sanitasi XSS:</strong><br>
+                Semua output teks dari pengguna dirender menggunakan kurung kurawal ganda <code>{{ '{{ $item->name }}' }}</code>. Laravel secara otomatis menjalankan fungsi <code>htmlspecialchars()</code> untuk menyaring karakter berbahaya, sehingga aplikasi kebal dari serangan <em>Cross-Site Scripting (XSS)</em>.<br><br>
+                <strong>4. Blade Directives untuk Personalisasi Antarmuka:</strong><br>
+                Kami menggunakan direktif <code>@if(Auth::user()->isAdmin())</code> untuk menampilkan tombol aksi administratif—seperti tombol 'Tambah Barang', 'Edit', dan 'Hapus'—secara kondisional hanya kepada Admin. Bagi siswa, tombol-tombol tersebut disembunyikan sepenuhnya dari antarmuka.<br><br>
+                <strong>5. CSS Cetak Responsif (<code>@media print</code>):</strong><br>
+                Pada halaman laporan dan bukti peminjaman, kami menyematkan aturan CSS khusus cetak. Saat tombol print ditekan, sidebar, header, dan elemen tombol aksi otomatis disembunyikan sehingga dokumen yang tercetak di atas kertas A4 terlihat resmi, bersih, dan profesional."
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- BAGIAN 6: DEMONSTRASI APLIKASI (LIVE DEMO) -->
+    <!-- ============================================================== -->
+    <div style="margin-top: 14px;">
+        <h1 class="section-title">
+            <span>6. Demonstrasi Aplikasi Secara Langsung (Live Demo)</span>
+            <span class="timeline-badge">13:00 – 16:45</span>
+        </h1>
+
+        <div class="action-box">
+            <div class="action-header">🎬 Petunjuk Aksi Layar & Visual:</div>
+            Beralih ke tampilan <strong>Browser Layar Penuh (Fullscreen)</strong>. Jalankan aplikasi di <code>http://localhost:8000</code> atau melalui Apache XAMPP. Lakukan demonstrasi secara sistematis sesuai 5 skenario di bawah ini.
+        </div>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata (Pengantar Demo):</div>
+            <div class="script-text">
+                "Sekarang kita masuk ke bagian yang paling dinantikan, yaitu <strong>Demonstrasi Aplikasi Secara Langsung (Live Demo)</strong>. Saya akan memperlihatkan alur kerja lengkap sistem dari dua perspektif, yaitu peran Admin Pengelola dan peran Siswa Peminjam."
+            </div>
+        </div>
+
+        <h2 class="sub-title">Skenario 1: Halaman Login & Autentikasi Pengguna</h2>
+        <div class="action-box">
+            Buka halaman login. Masukkan email <code>admin@sekolah.sch.id</code> dan password <code>admin123</code>, lalu klik tombol <strong>Masuk ke Sistem</strong>.
+        </div>
+        <div class="script-box">
+            <div class="script-text">
+                "Pertama, kita berada di halaman Login yang responsif dan aman. Saya memasukkan kredensial admin dan menekan tombol login. Sistem memvalidasi token CSRF dan hash password, lalu mengarahkan kita langsung ke Dashboard Utama Admin."
+            </div>
+        </div>
+
+        <h2 class="sub-title">Skenario 2: Eksplorasi Dashboard KPI & CRUD Master Data Barang</h2>
+        <div class="action-box">
+            Tunjukkan kartu statistik di dashboard. Klik menu <strong>Sarana & Inventaris</strong>. Klik tombol <strong>+ Tambah Barang</strong>. Isi form: Nama "Proyektor Epson EB-X500", Kategori "Multimedia", Kode "MM-PRJ-009", Stok 5, Kondisi "Baik", Lokasi "Lab Multimedia". Simpan dan tunjukkan pesan notifikasi sukses hijau.
+        </div>
+        <div class="script-box">
+            <div class="script-text">
+                "Pada Dashboard Admin, kita disajikan kartu metrik analitik: total inventaris, sirkulasi peminjaman aktif, barang terlambat, dan kartu peringatan stok menipis.<br><br>
+                Sekarang saya masuk ke menu Master Data Barang. Saya akan mendemonstrasikan proses CRUD dengan menambahkan satu barang baru: 'Proyektor Epson EB-X500' dengan kode unik 'MM-PRJ-009' dan stok sebanyak 5 unit di Lab Multimedia. Setelah saya klik simpan, data langsung tersimpan di basis data MySQL, muncul alert sukses, dan barang tampil di baris teratas tabel."
+            </div>
+        </div>
+
+        <h2 class="sub-title">Skenario 3: Transaksi Peminjaman & Otomatisasi Pengurangan Stok</h2>
+        <div class="action-box">
+            Buka menu <strong>Peminjaman</strong> &gt; <strong>+ Catat Peminjaman</strong>. Pilih peminjam "Siswa", pilih barang "Proyektor Epson EB-X500", masukkan jumlah 2 unit, tentukan tanggal tenggat. Klik simpan. Tunjukkan bahwa di tabel barang, stok proyektor otomatis berkurang dari 5 menjadi 3!
+        </div>
+        <div class="script-box">
+            <div class="script-text">
+                "Selanjutnya kita uji alur transaksi peminjaman. Saya mencatat peminjaman proyektor tadi sebanyak 2 unit atas nama siswa. Ketika peminjaman disimpan, sistem secara otomatis mengeksekusi <code>$item->decrement('stock', 2)</code> di dalam database transaction. Bisa kita saksikan di daftar barang, sisa stok proyektor yang tadinya 5 sekarang otomatis berkurang menjadi 3 unit secara akurat!"
+            </div>
+        </div>
+
+        <div class="page-break"></div>
+
+        <h2 class="sub-title">Skenario 4: Verifikasi Pengembalian & Pemulihan Stok Otomatis</h2>
+        <div class="action-box">
+            Buka menu <strong>Pengembalian (Return Logs)</strong> &gt; klik <strong>Verifikasi Pengembalian</strong> pada transaksi tadi. Pilih kondisi fisik barang "Baik", masukkan catatan "Kondisi lengkap dan kabel utuh". Klik simpan. Tunjukkan status pinjaman berubah menjadi "Dikembalikan" dan stok proyektor pulih kembali menjadi 5 unit!
+        </div>
+        <div class="script-box">
+            <div class="script-text">
+                "Sekarang mari kita simulasikan saat siswa mengembalikan barang tersebut ke ruang sarpras. Admin membuka menu Pengembalian, memilih transaksi tersebut, memverifikasi kondisi fisiknya 'Baik', dan menyimpan catatan.<br><br>
+                Begitu disimpan, status transaksi berubah menjadi 'Dikembalikan', tercatat waktu pengembalian aktual, dan sisa stok fisik barang di gudang secara otomatis bertambah kembali 2 unit sehingga pulih kembali menjadi 5 unit utuh!"
+            </div>
+        </div>
+
+        <h2 class="sub-title">Skenario 5: Laporan Cetak Resmi, Ekspor Data & Audit Trail (Activity Logs)</h2>
+        <div class="action-box">
+            Buka menu <strong>Laporan Resmi</strong>. Tunjukkan opsi filter tanggal dan status. Klik tombol <strong>Cetak Laporan</strong> (tunjukkan preview cetak rapi) dan tombol <strong>Ekspor CSV</strong>. Terakhir, buka menu <strong>Activity Log</strong> untuk memperlihatkan rekaman audit trail.
+        </div>
+        <div class="script-box">
+            <div class="script-text">
+                "Fitur penting berikutnya adalah <strong>Laporan Resmi</strong>. Admin dapat memfilter data berdasarkan rentang tanggal maupun status peminjaman. Ketika tombol cetak ditekan, jendela cetak browser terbuka dengan tata letak bersih berkop resmi sekolah.<br><br>
+                Admin juga dapat mengunduh seluruh data dalam format CSV untuk diolah lebih lanjut di Microsoft Excel. Dan di menu <strong>Activity Logs</strong>, seluruh riwayat aksi kita tadi—mulai dari penambahan barang, peminjaman, hingga pengembalian—terekam dengan detail waktu dan identitas pelakunya untuk transparansi total."
+            </div>
+        </div>
+
+        <h2 class="sub-title">Skenario 6: Login Pengguna Mandiri (Siswa) & Proteksi Otorisasi</h2>
+        <div class="action-box">
+            Logout dari Admin. Login sebagai Siswa (<code>siswa@sekolah.sch.id</code> / <code>password123</code>). Tunjukkan katalog sarpras, pengajuan pinjam mandiri, dan menu Peminjaman Saya. Coba ketikkan URL admin secara manual di address bar (misal: <code>http://localhost:8000/users</code>) untuk membuktikan pencegatan HTTP 403 Forbidden.
+        </div>
+        <div class="script-box">
+            <div class="script-text">
+                "Terakhir, saya logout dan masuk sebagai Siswa. Pada akun siswa, tampilan dashboard jauh lebih sederhana dan difokuskan pada kebutuhan peminjam: siswa dapat menjelajahi Katalog Sarana Digital, mengajukan permohonan pinjam mandiri, dan melihat riwayat barang yang sedang mereka bawa.<br><br>
+                Dan untuk menguji keamanan otorisasi: jika siswa mencoba mengetikkan URL rahasia admin seperti <code>/users</code> secara langsung di address bar, middleware <code>EnsureUserRole</code> langsung mencegat dan menampilkan halaman <strong>403 Akses Ditolak</strong>. Ini membuktikan sistem memiliki lapisan keamanan yang sangat andal."
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- BAGIAN 7: KENDALA DAN SOLUSI -->
+    <!-- ============================================================== -->
+    <div style="margin-top: 14px;">
+        <h1 class="section-title">
+            <span>7. Kendala Teknis yang Ditemui & Solusi Konkret</span>
+            <span class="timeline-badge">16:45 – 18:30</span>
+        </h1>
+
+        <div class="action-box">
+            <div class="action-header">🎬 Petunjuk Aksi Layar & Visual:</div>
+            Beralih kembali ke tampilan <strong>VS Code</strong> atau gunakan <strong>Webcam PiP</strong>. Bicaralah dengan intonasi analitis dan percaya diri untuk menunjukkan pemahaman problem-solving Anda sebagai seorang calon fullstack developer.
+        </div>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata:</div>
+            <div class="script-text">
+                "Memasuki poin ketujuh, yaitu <strong>Kendala dan Solusi</strong>.<br><br>
+                Selama kurang lebih tiga minggu proses perancangan dan pengkodean, tentu saja saya menghadapi beberapa kendala teknis nyata. Namun dari kendala-kendala inilah pemahaman teknis saya berkembang pesat. Berikut adalah empat kendala utama beserta solusi yang saya temukan dan terapkan:<br><br>
+                <strong>1. Kendala Sinkronisasi Stok & Potensi Race Condition:</strong><br>
+                <em>Masalah:</em> Jika ada beberapa pengguna mengajukan pinjaman terhadap barang yang sama pada waktu yang hampir bersamaan, berpotensi terjadi pembacaan stok lama yang menyebabkan stok fisik minus di bawah nol.<br>
+                <em>Solusi:</em> Saya menerapkan dua lapis pertahanan: pertama, validasi Form Request kustom <code>StoreLoanRequest</code> yang memeriksa ketersediaan stok sebelum eksekusi; dan kedua, membungkus proses dekremen stok dan pembuatan baris pinjaman ke dalam <code>DB::transaction()</code> atomis.<br><br>
+                <strong>2. Integritas Relasi Foreign Key saat Penghapusan Data:</strong><br>
+                <em>Masalah:</em> Saat Admin ingin menghapus data barang lama, database MySQL menolak dengan error <em>Integrity Constraint Violation</em> karena ID barang tersebut masih tercatat sebagai foreign key pada riwayat transaksi peminjaman lampau.<br>
+                <em>Solusi:</em> Saya mengimplementasikan fitur <strong>Soft Deletes</strong> (trait <code>SoftDeletes</code> dan kolom <code>deleted_at</code>) pada tabel <code>items</code> dan <code>loans</code>. Dengan demikian, data barang dinonaktifkan dari katalog tanpa merusak atau menghilangkan integritas riwayat transaksi masa lalu.<br><br>
+                <strong>3. Masalah Sesi Formulir Kedaluwarsa (CSRF Error 419):</strong><br>
+                <em>Masalah:</em> Ketika pengguna membuka tab form peminjaman lalu meninggalkannya beberapa saat, token CSRF kedaluwarsa sehingga saat tombol simpan ditekan muncul halaman putih error 419 Page Expired.<br>
+                <em>Solusi:</em> Pada berkas <code>bootstrap/app.php</code>, saya mengonfigurasikan custom exception handler untuk menangkap <code>TokenMismatchException</code>, lalu secara otomatis mengalihkan pengguna kembali ke halaman form dengan pesan flash peringatan yang ramah dan meminta mereka mengirim ulang form.<br><br>
+                <strong>4. Tata Letak Cetak Dokumen Fisik yang Berantakan:</strong><br>
+                <em>Masalah:</em> Pada awalnya, ketika fitur cetak laporan dibuka, seluruh elemen antarmuka web seperti navbar atas, tombol aksi, dan pagination ikut tercetak dan merusak format kertas A4.<br>
+                <em>Solusi:</em> Saya menulis aturan stylesheet cetak terdedikasi menggunakan media query <code>@media print</code>. Aturan ini menyembunyikan elemen navigasi, menata ulang margin kertas A4, serta mengatur header kop resmi sekolah secara rapi."
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- BAGIAN 8: KESIMPULAN & PENUTUP -->
+    <!-- ============================================================== -->
+    <div style="margin-top: 14px;">
+        <h1 class="section-title">
+            <span>Segmen 8: Kesimpulan & Penutup</span>
+            <span class="timeline-badge">18:30 – 19:30</span>
+        </h1>
+
+        <div class="action-box">
+            <div class="action-header">🎬 Petunjuk Aksi Layar & Visual:</div>
+            Kembalikan tampilan ke <strong>Kamera Penuh (Webcam Fullscreen)</strong>. Lakukan kontak mata ke lensa kamera, ekspresikan rasa percaya diri, kepuasan atas hasil kerja proyek, dan berikan salam penutup yang hangat.
+        </div>
+
+        <div class="script-box">
+            <div class="script-header">🗣️ Naskah Lisan Kata-per-Kata:</div>
+            <div class="script-text">
+                "Sebagai kesimpulan, proyek fullstack <strong>Sistem Inventaris Sekolah (SIM Sarpras)</strong> yang saya kembangkan selama tiga minggu ini telah berhasil memenuhi seluruh target fungsionalitas aplikasi pengelolaan aset modern: mulai dari otomasi sirkulasi peminjaman, perlindungan stok fisik yang akurat, pengawasan kondisi barang saat pengembalian, hingga pelaporan resmi dan jejak audit yang transparan.<br><br>
+                Pengalaman mengerjakan proyek ini memberikan pemahaman mendalam bagi saya mengenai arsitektur MVC modern Laravel, pengelolaan relasi database relasional, pengamanan otorisasi peran pengguna, dan pembuatan antarmuka web yang intuitif.<br><br>
+                Saya mengucapkan terima kasih yang sebesar-besarnya kepada Bapak/Ibu trainer dan rekan-rekan pembimbing magang atas ilmu, bimbingan, dan kesempatan berharga ini. Semoga presentasi dan aplikasi ini dapat memberikan manfaat nyata.<br><br>
+                Kurang lebihnya saya mohon maaf. Sekian presentasi dari saya, selamat pagi/siang, dan salam sejahtera untuk kita semua. Terima kasih!"
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- LEMBAR PANDUAN PENGUMPULAN TUGAS -->
+    <!-- ============================================================== -->
+    <div class="page-break"></div>
+    <div>
+        <h1 class="section-title">
+            <span>Panduan & Checklist Pengumpulan Tugas Akhir</span>
+            <span class="timeline-badge">Ketentuan Resmi</span>
+        </h1>
+
+        <div class="highlight-box">
+            <strong>📌 Format Pengumpulan Tugas Resmi:</strong><br>
+            Sesuai instruksi pengumuman, video rekaman presentasi wajib diunggah ke Google Drive Magang pada folder <strong>Proyek Inventaris Sekolah</strong> dengan batas waktu: <strong>Jumat, 30 Oktober 2026</strong>.
+        </div>
+
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Item Ketentuan</th>
+                    <th style="width: 40%;">Spesifikasi yang Diminta</th>
+                    <th style="width: 35%;">Status / Checklist Pribadi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Format Nama File Video</strong></td>
+                    <td><code>Nama Lengkap - Video Penjelasan Project Fullstack Laravel.mp4</code></td>
+                    <td>[ &check; ] Pastikan ganti dengan nama lengkap Anda</td>
+                </tr>
+                <tr>
+                    <td><strong>Durasi Rekaman</strong></td>
+                    <td>10 hingga 20 Menit (Ideal: 15 – 18 Menit)</td>
+                    <td>[ &check; ] Sudah dipandu dengan timeline 16-18 menit</td>
+                </tr>
+                <tr>
+                    <td><strong>Unsur Visual Wajib</strong></td>
+                    <td>Menampilkan Wajah (Webcam) dan Code Editor (VS Code)</td>
+                    <td>[ &check; ] Menggunakan Scene OBS (Webcam + VS Code)</td>
+                </tr>
+                <tr>
+                    <td><strong>Kualitas Audio</strong></td>
+                    <td>Audio jernih, jelas, tanpa noise bising</td>
+                    <td>[ &check; ] Uji coba rekaman 30 detik sebelum merekam penuh</td>
+                </tr>
+                <tr>
+                    <td><strong>Status Eksekusi Aplikasi</strong></td>
+                    <td>Aplikasi dapat dijalankan secara lancar saat live demo</td>
+                    <td>[ &check; ] Pastikan XAMPP (Apache & MySQL) aktif</td>
+                </tr>
+                <tr>
+                    <td><strong>Folder Google Drive</strong></td>
+                    <td>Folder <em>Proyek Inventaris Sekolah</em> di Drive Magang</td>
+                    <td>[ &check; ] Unggah video .mp4 dan berkas proyek .zip</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="tip-box">
+            <strong>📋 Perintah Cepat Persiapan Sebelum Mulai Merekam (Cheatsheet Terminal):</strong>
+            <div class="code-block">
+<span class="comment"># 1. Masuk ke direktori proyek inventaris</span>
+cd c:\xampp\htdocs\Inventarisku
+
+<span class="comment"># 2. Pastikan database dan seeder dalam kondisi data terisi lengkap</span>
+php artisan migrate:fresh --seed
+
+<span class="comment"># 3. Jalankan web server lokal Laravel</span>
+php artisan serve
+<span class="comment"># -> Buka browser di http://localhost:8000</span>
+            </div>
+        </div>
+
+        <div class="action-box">
+            <strong>🔑 Kredensial Pengujian (Seeder Ready):</strong><br>
+            &bull; <strong>Akun Admin:</strong> <code>admin@sekolah.sch.id</code> &bull; Password: <code>admin123</code> (atau <code>password</code>)<br>
+            &bull; <strong>Akun Guru:</strong> <code>guru@sekolah.sch.id</code> &bull; Password: <code>password123</code><br>
+            &bull; <strong>Akun Siswa:</strong> <code>siswa@sekolah.sch.id</code> &bull; Password: <code>password123</code>
+        </div>
+    </div>
+
+</body>
+</html>
